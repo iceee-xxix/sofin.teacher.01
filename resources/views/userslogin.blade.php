@@ -94,7 +94,7 @@ $config = Config::first();
                             </div>
                             <div class="mb-3 row">
                                 <div class="col-6 d-flex justify-content-end">
-                                    <a href="{{route('delivery.register')}}" class="btn btn-primary" type="button">สมัครสมาชิก</a>
+                                    <a href="{{route('users.register')}}" class="btn btn-primary" type="button">สมัครสมาชิก</a>
                                 </div>
                                 <div class="col-6 d-flex justify-content-start">
                                     <button class="btn btn-primary" type="submit">เข้าสู่ระบบ</button>

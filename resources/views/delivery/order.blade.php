@@ -103,7 +103,7 @@ $config = Config::first();
                             </div>
                             <div class="text-end mt-3 mt-md-0">
                                 @if($rs->status == 1)
-                                <a href="{{route('delivery.pay',$rs->id)}}" type="button" class="btn btn-sm btn-primary">
+                                <a href="{{route('users.pay',$rs->id)}}" type="button" class="btn btn-sm btn-primary">
                                     ชำระเงิน
                                 </a>
                                 @endif
@@ -135,7 +135,7 @@ $config = Config::first();
         var id = $(this).data('id');
         $.ajax({
             type: "post",
-            url: "{{ route('delivery.listOrderDetail') }}",
+            url: "{{ route('users.listOrderDetail') }}",
             data: {
                 id: id
             },

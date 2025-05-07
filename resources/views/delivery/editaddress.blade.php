@@ -74,7 +74,7 @@ $config = Config::first();
         <div class="card">
             <div class="card-header">ข้อมูลที่อยู่</div>
             <div class="card-body">
-                <form action="{{route('delivery.addressSave')}}" method="post">
+                <form action="{{route('users.addressSave')}}" method="post">
                     @csrf
                     <div class="row g-3 mb-3">
                         <div class="col-md-12">

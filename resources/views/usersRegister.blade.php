@@ -65,7 +65,7 @@ $config = Config::first();
                                 <span class="app-brand-text demo text-body fw-bolder">{{ $config->name ?? 'shop' }}</span>
                             </a>
                         </div>
-                        <form action="{{route('delivery.UsersRegister')}}" method="post">
+                        <form action="{{route('users.UsersRegister')}}" method="post">
                             @csrf
                             <div class="mb-3">
                                 <label for="name" class="form-label">ชื่อ</label>

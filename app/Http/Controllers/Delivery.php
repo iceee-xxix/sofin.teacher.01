@@ -129,9 +129,9 @@ class Delivery extends Controller
         $users->email = $input['email'];
         if ($users->save()) {
             Session::put('user', $users);
-            return redirect()->route('delivery.users')->with('success', 'เพิ่มที่อยู่เรียบร้อยแล้ว');
+            return redirect()->route('users.users')->with('success', 'เพิ่มที่อยู่เรียบร้อยแล้ว');
         }
-        return redirect()->route('delivery.users')->with('error', 'ไม่สามารถเพิ่มที่อยู่ได้');
+        return redirect()->route('users.users')->with('error', 'ไม่สามารถเพิ่มที่อยู่ได้');
     }
 
     public function listorder()
@@ -186,9 +186,9 @@ class Delivery extends Controller
         $users->password = Hash::make($input['password']);
         $users->email_verified_at = now();
         if ($users->save()) {
-            return redirect()->route('delivery.login')->with('success', 'สมัครสมาชิกเรียบร้อยแล้ว');
+            return redirect()->route('users.login')->with('success', 'สมัครสมาชิกเรียบร้อยแล้ว');
         }
-        return redirect()->route('delivery.register')->with('error', 'สมัครสมาชิกไม่สำเร็จ');
+        return redirect()->route('users.register')->with('error', 'สมัครสมาชิกไม่สำเร็จ');
     }
 
     public function pay($id)
@@ -226,7 +226,7 @@ class Delivery extends Controller
             $pay->users_id = Session::get('user')->id;
             $pay->image = $path;
             if ($pay->save()) {
-                return redirect()->route('delivery.listorder')->with('success', 'บันทึกรายการเรียบร้อยแล้ว');
+                return redirect()->route('users.listorder')->with('success', 'บันทึกรายการเรียบร้อยแล้ว');
             }
         }
     }

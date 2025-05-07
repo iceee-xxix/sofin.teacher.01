@@ -193,7 +193,7 @@ $config = Config::first();
             if (Object.keys(orderData).length > 0) {
                 $.ajax({
                     type: "post",
-                    url: "{{ route('delivery.SendOrder') }}",
+                    url: "{{ route('users.SendOrder') }}",
                     data: {
                         orderData: orderData,
                         remark: $('#remark').val()
@@ -223,7 +223,7 @@ $config = Config::first();
         var id = $(input).val();
         $.ajax({
             type: "post",
-            url: "{{route('delivery.change')}}",
+            url: "{{route('users.change')}}",
             data: {
                 id: id
             },

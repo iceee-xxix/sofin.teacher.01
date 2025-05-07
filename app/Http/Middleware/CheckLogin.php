@@ -21,8 +21,8 @@ class CheckLogin
             if ($_SERVER['REQUEST_URI'] == '/admin') {
                 return redirect('/admin/login');
             }
-            if (preg_match('/delivery/', $_SERVER['REQUEST_URI'])) {
-                return redirect('/delivery/login');
+            if (preg_match('/users/', $_SERVER['REQUEST_URI'])) {
+                return redirect('/users/login');
             }
             abort(403, 'Unauthorized');
             // return redirect('/admin/login');

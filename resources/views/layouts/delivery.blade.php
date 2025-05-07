@@ -112,28 +112,28 @@ $config = Config::first();
 
     <nav class="bottom-navbar" id="bottomNavbar">
         <?php if (!Session::has('user')) { ?>
-            <a href="{{url('delivery/login')}}" class="">
+            <a href="{{url('users/login')}}" class="">
                 <div class="icon"><i class="fas fa-home"></i></div>
                 <div>เข้าสู่ระบบ</div>
             </a>
         <?php } else { ?>
-            <a href="/delivery" class="">
+            <a href="/" class="">
                 <div class="icon"><i class="fas fa-home"></i></div> <!-- ✅ ไอคอนจาก Font Awesome -->
                 <div>หน้าแรก</div>
             </a>
-            <a href="{{route('delivery.order')}}">
+            <a href="{{route('users.order')}}">
                 <div class="icon"><i class="fas fa-receipt"></i></div> <!-- ✅ ใช้ icon แสดงคำสั่งซื้อ -->
                 <div>คำสั่งซื้อ</div>
             </a>
-            <a href="{{route('delivery.listorder')}}">
+            <a href="{{route('users.listorder')}}">
                 <div class="icon"><i class="fas fa-clipboard-list"></i></div> <!-- ✅ ใช้ icon แสดงคำสั่งซื้อ -->
                 <div>รายการ</div>
             </a>
-            <a href="{{route('delivery.progresslist')}}">
+            <a href="{{route('users.progresslist')}}">
                 <div class="icon"><i class="fa-solid fa-square-poll-vertical"></i></div> <!-- ✅ ใช้ icon แสดงคำสั่งซื้อ -->
                 <div>รายงานผล</div>
             </a>
-            <a href="{{route('delivery.users')}}">
+            <a href="{{route('users.users')}}">
                 <div class="icon"><i class="fas fa-user"></i></div> <!-- ✅ ใช้ icon แสดงคำสั่งซื้อ -->
                 <div>โปรไฟล์</div>
             </a>
@@ -156,26 +156,6 @@ $config = Config::first();
             }
             lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
         }, false);
-    </script>
-    <script>
-        $('#sendEmp').click(function(e) {
-            e.preventDefault();
-            $.ajax({
-                type: "post",
-                url: "{{route('sendEmp')}}",
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                },
-                dataType: "json",
-                success: function(response) {
-                    if (response.status == true) {
-                        Swal.fire(response.message, "", "success");
-                    } else {
-                        Swal.fire(response.message, "", "error");
-                    }
-                }
-            });
-        });
     </script>
 </body>
 

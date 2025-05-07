@@ -25,14 +25,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //สั่งจากที่ร้าน
-Route::get('/', [Main::class, 'index'])->name('index');
-Route::get('/order', [Main::class, 'order'])->name('order');
-Route::post('/sendEmp', [Main::class, 'sendEmp'])->name('sendEmp');
-Route::post('/sendorder', [Main::class, 'SendOrder'])->name('SendOrder');
-Route::get('/detail/{id}', [Main::class, 'detail'])->name('detail');
-Route::get('/detail', function () {
-    return redirect()->route('index');
-});
 Route::get('/buy', function () {
     return view('users.list_page');
 });
@@ -40,27 +32,27 @@ Route::get('/total', function () {
     return view('index');
 });
 //สั่ง delivery
-Route::get('/delivery', [Delivery::class, 'index'])->name('index');
-Route::get('/delivery/login', [Delivery::class, 'login'])->name('delivery.login');
-Route::get('/delivery/register', [Delivery::class, 'register'])->name('delivery.register');
-Route::post('/delivery/UsersRegister', [Delivery::class, 'UsersRegister'])->name('delivery.UsersRegister');
-Route::get('/delivery/detail/{id}', [Delivery::class, 'detail'])->name('delivery.detail');
-Route::get('/delivery/order', [Delivery::class, 'order'])->name('delivery.order');
-Route::post('/delivery/sendEmp', [Delivery::class, 'sendEmp'])->name('delivery.sendEmp');
-Route::post('/delivery/sendorder', [Delivery::class, 'SendOrder'])->name('delivery.SendOrder');
+Route::get('/', [Delivery::class, 'index'])->name('index');
+Route::get('/users/login', [Delivery::class, 'login'])->name('users.login');
+Route::get('/users/register', [Delivery::class, 'register'])->name('users.register');
+Route::post('/users/UsersRegister', [Delivery::class, 'UsersRegister'])->name('users.UsersRegister');
+Route::get('/users/detail/{id}', [Delivery::class, 'detail'])->name('users.detail');
+Route::get('/users/order', [Delivery::class, 'order'])->name('users.order');
+Route::post('/users/sendEmp', [Delivery::class, 'sendEmp'])->name('users.sendEmp');
+Route::post('/users/sendorder', [Delivery::class, 'SendOrder'])->name('users.SendOrder');
 
 Route::middleware(['role:user'])->group(function () {
-    Route::get('/delivery/users', [Delivery::class, 'users'])->name('delivery.users');
-    Route::post('/delivery/usersSave', [Delivery::class, 'usersSave'])->name('delivery.usersSave');
-    Route::get('/delivery/createaddress', [Delivery::class, 'createaddress'])->name('delivery.createaddress');
-    Route::get('/delivery/editaddress/{id}', [Delivery::class, 'editaddress'])->name('delivery.editaddress');
-    Route::post('/delivery/addressSave', [Delivery::class, 'addressSave'])->name('delivery.addressSave');
-    Route::post('/delivery/change', [Delivery::class, 'change'])->name('delivery.change');
-    Route::get('/delivery/listorder', [Delivery::class, 'listorder'])->name('delivery.listorder');
-    Route::post('/delivery/listOrderDetail', [Delivery::class, 'listOrderDetail'])->name('delivery.listOrderDetail');
-    Route::get('/delivery/pay/{id}', [Delivery::class, 'pay'])->name('delivery.pay');
-    Route::post('/delivery/pay/paySave', [Delivery::class, 'paySave'])->name('delivery.paySave');
-    Route::get('/delivery/progresslist', [Delivery::class, 'progresslist'])->name('delivery.progresslist');
+    Route::get('/users/users', [Delivery::class, 'users'])->name('users.users');
+    Route::post('/users/usersSave', [Delivery::class, 'usersSave'])->name('users.usersSave');
+    Route::get('/users/createaddress', [Delivery::class, 'createaddress'])->name('users.createaddress');
+    Route::get('/users/editaddress/{id}', [Delivery::class, 'editaddress'])->name('users.editaddress');
+    Route::post('/users/addressSave', [Delivery::class, 'addressSave'])->name('users.addressSave');
+    Route::post('/users/change', [Delivery::class, 'change'])->name('users.change');
+    Route::get('/users/listorder', [Delivery::class, 'listorder'])->name('users.listorder');
+    Route::post('/users/listOrderDetail', [Delivery::class, 'listOrderDetail'])->name('users.listOrderDetail');
+    Route::get('/users/pay/{id}', [Delivery::class, 'pay'])->name('users.pay');
+    Route::post('/users/pay/paySave', [Delivery::class, 'paySave'])->name('users.paySave');
+    Route::get('/users/progresslist', [Delivery::class, 'progresslist'])->name('users.progresslist');
 });
 //admin
 Route::get('/admin/login', [AuthController::class, 'showLoginForm'])->name('login');

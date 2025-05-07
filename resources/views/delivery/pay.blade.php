@@ -115,7 +115,7 @@ $config = Config::first();
                 ข้อมูลชำระเงิน
             </div>
             <div class="card-body">
-                <form action="{{route('delivery.paySave')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('users.paySave')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @if($config->promptpay != '')
                     <div class="row g-3 mb-3">
@@ -156,7 +156,7 @@ $config = Config::first();
         var id = $(this).data('id');
         $.ajax({
             type: "post",
-            url: "{{ route('delivery.listOrderDetail') }}",
+            url: "{{ route('users.listOrderDetail') }}",
             data: {
                 id: id
             },

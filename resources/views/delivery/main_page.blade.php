@@ -110,7 +110,7 @@ $config = Config::first();
                 @foreach($category as $rs)
                 <div class="col-6 mb-2">
                     <div class="food-box">
-                        <a href="{{route('delivery.detail',$rs->id)}}" style="text-decoration: none;" class="d-flex flex-column justify-content-center align-items-center">
+                        <a href="{{route('users.detail',$rs->id)}}" style="text-decoration: none;" class="d-flex flex-column justify-content-center align-items-center">
                             <?php if ($rs['files']) { ?>
                                 <img src="{{ url('storage/'.$rs['files']->file) }}" alt="icon">
                             <?php } else { ?>

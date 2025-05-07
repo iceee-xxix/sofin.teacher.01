@@ -126,7 +126,7 @@ function DateTimeThai($strDate)
         var id = $(this).data('id');
         $.ajax({
             type: "post",
-            url: "{{ route('delivery.listOrderDetail') }}",
+            url: "{{ route('users.listOrderDetail') }}",
             data: {
                 id: id
             },
