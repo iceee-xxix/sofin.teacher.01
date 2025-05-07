@@ -103,7 +103,7 @@ $config = Config::first();
             </div>
         </div> -->
         <div class="title-food">
-            หมวดหมู่
+            คอร์สเรียน
         </div>
         <div class="gap-2 py-2">
             <div class="row py-2">
