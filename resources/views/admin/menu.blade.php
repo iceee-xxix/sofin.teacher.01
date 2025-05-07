@@ -40,12 +40,12 @@ $config = Config::first();
                 <div data-i18n="Analytics">โปรโมชั่น</div>
             </a>
         </li>
-        <li class="menu-item {{ ($function_key == 'table') ? 'active' : '' }}">
+        <!-- <li class="menu-item {{ ($function_key == 'table') ? 'active' : '' }}">
             <a href="{{route('table')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-barcode"></i>
                 <div data-i18n="Analytics">จัดการโต้ะ</div>
             </a>
-        </li>
+        </li> -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">อาหาร</span></li>
         <li class="menu-item {{ ($function_key == 'category') ? 'active' : '' }}">
             <a href="{{route('category')}}" class="menu-link">
