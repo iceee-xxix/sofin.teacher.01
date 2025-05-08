@@ -25,7 +25,13 @@
                                     <div class="row g-3 mb-3">
                                         <div class="col-md-12">
                                             <label for="remark" class="form-label">รายละเอียด : </label>
-                                            <textarea class="form-control" rows="6" name="remark" id="remark">{{ old('remark', $info->remark) }}</textarea>
+                                            <textarea class="form-control" rows="6" name="remark" id="remark" required>{{ old('remark', $info->remark) }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row g-3 mb-3">
+                                        <div class="col-md-12">
+                                            <label for="date" class="form-label">วันที่ : </label>
+                                            <input type="date" class="form-control" id="date" name="date" value="{{ old('date', $info->date) }}" required>
                                         </div>
                                     </div>
                                 </div>

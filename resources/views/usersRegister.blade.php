@@ -58,6 +58,7 @@ $config = Config::first();
     <div class="container-xxl">
         <div class="authentication-wrapper authentication-basic container-p-y">
             <div class="authentication-inner">
+                <a href="{{route('index')}}" class="btn btn-sm btn-outline-primary mb-2" type="button">หน้าแรก</a>
                 <div class="card">
                     <div class="card-body">
                         <div class="app-brand justify-content-center">

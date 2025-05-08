@@ -79,6 +79,7 @@ class Admin extends Controller
                 $action = '<button data-id="' . $rs->id . '" type="button" class="btn btn-sm btn-outline-primary modalShow m-1">รายละเอียด</button>' . $pay;
                 $info[] = [
                     'name' => $rs['users']->name,
+                    'tel' => $rs['users']->tel,
                     'order_id' => $rs->id,
                     'total' => $rs->total,
                     'remark' => $rs->remark,

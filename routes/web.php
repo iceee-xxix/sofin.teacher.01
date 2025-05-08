@@ -153,7 +153,7 @@ Route::middleware(['role:admin'])->group(function () {
     Route::get('/admin/progress/progressDetail/edit/{id}', [Progress::class, 'progressDetailEdit'])->name('progressDetailEdit');
     Route::post('/admin/progress/progressDetail/save', [Progress::class, 'ProgressSave'])->name('ProgressSave');
     // Route::post('/admin/table/QRshow', [Table::class, 'QRshow'])->name('QRshow');
-    // Route::post('/admin/table/delete', [Table::class, 'tableDelete'])->name('tableDelete');
+    Route::post('/admin/progress/delete', [Progress::class, 'ProgressDelete'])->name('ProgressDelete');
 });
 
 

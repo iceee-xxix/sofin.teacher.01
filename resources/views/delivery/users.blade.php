@@ -90,6 +90,12 @@ $config = Config::first();
                     </div>
                     <div class="row g-3 mb-3">
                         <div class="col-md-12">
+                            <label for="tel" class="form-label d-flex justify-content-start">เบอร์โทรศัพท์ : </label>
+                            <input type="text" class="form-control" id="tel" name="tel" value="{{Session::get('user')->tel}}" required>
+                        </div>
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-12">
                             <button class="btn btn-sm btn-outline-primary" type="submit">บันทึก</button>
                         </div>
                     </div>

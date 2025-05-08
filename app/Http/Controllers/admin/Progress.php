@@ -69,6 +69,7 @@ class Progress extends Controller
                 $info[] = [
                     'link_url' => $rs->link_url,
                     'remark' => $rs->remark,
+                    'date' => ($rs->date) ? $this->DateTimeThai($rs->date) : '',
                     'action' => $action
                 ];
             }
@@ -104,6 +105,7 @@ class Progress extends Controller
             $table->users_id = $input['users_id'];
             $table->link_url = $input['link_url'];
             $table->remark = $input['remark'];
+            $table->date = $input['date'];
             if ($table->save()) {
                 return redirect()->route('progressDetail', $input['users_id'])->with('success', 'บันทึกรายการเรียบร้อยแล้ว');
             }
@@ -111,6 +113,7 @@ class Progress extends Controller
             $table = Progresses::find($input['id']);
             $table->link_url = $input['link_url'];
             $table->remark = $input['remark'];
+            $table->date = $input['date'];
             if ($table->save()) {
                 return redirect()->route('progressDetail', $table->users_id)->with('success', 'บันทึกรายการเรียบร้อยแล้ว');
             }
@@ -118,7 +121,7 @@ class Progress extends Controller
         return redirect()->route('progress')->with('error', 'ไม่สามารถบันทึกข้อมูลได้');
     }
 
-    public function tableDelete(Request $request)
+    public function ProgressDelete(Request $request)
     {
         $data = [
             'status' => false,
@@ -126,7 +129,7 @@ class Progress extends Controller
         ];
         $id = $request->input('id');
         if ($id) {
-            $delete = ModelsTable::find($id);
+            $delete = Progresses::find($id);
             if ($delete->delete()) {
                 $data = [
                     'status' => true,
@@ -137,4 +140,14 @@ class Progress extends Controller
 
         return response()->json($data);
     }
+
+    function DateTimeThai($strDate)
+{
+    $strYear = date("Y", strtotime($strDate)) + 543;
+    $strMonth = date("n", strtotime($strDate));
+    $strDay = date("j", strtotime($strDate));
+    $strMonthCut = array("", "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม");
+    $strMonthThai = $strMonthCut[$strMonth];
+    return "$strDay $strMonthThai $strYear";
+}
 }

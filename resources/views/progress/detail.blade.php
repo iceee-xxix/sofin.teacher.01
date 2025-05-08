@@ -17,6 +17,7 @@
                                 <tr>
                                     <th class="text-left">รายละเอียด</th>
                                     <th class="text-left">ลิงค์ Url</th>
+                                    <th class="text-center">วันที่</th>
                                     <th class="text-center">จัดการ</th>
                                 </tr>
                             </thead>
@@ -56,11 +57,17 @@
             columns: [{
                     data: 'remark',
                     class: 'text-left',
-                    width: '60%'
+                    width: '40%'
                 },
                 {
                     data: 'link_url',
                     class: 'text-left',
+                    width: '20%',
+                    orderable: false
+                },
+                {
+                    data: 'date',
+                    class: 'text-center',
                     width: '20%',
                     orderable: false
                 },
@@ -79,7 +86,7 @@
         e.preventDefault();
         var id = $(this).data('id');
         Swal.fire({
-            title: "ท่านต้องการลบโต้ะใช่หรือไม่?",
+            title: "ท่านต้องการลบใช่หรือไม่?",
             icon: "question",
             showDenyButton: true,
             confirmButtonText: "ตกลง",
@@ -87,7 +94,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: "{{route('tableDelete')}}",
+                    url: "{{route('ProgressDelete')}}",
                     type: "post",
                     data: {
                         id: id

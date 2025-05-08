@@ -127,6 +127,7 @@ class Delivery extends Controller
         $users = User::find(Session::get('user')->id);
         $users->name = $input['name'];
         $users->email = $input['email'];
+        $users->tel = $input['tel'];
         if ($users->save()) {
             Session::put('user', $users);
             return redirect()->route('users.users')->with('success', 'เพิ่มที่อยู่เรียบร้อยแล้ว');

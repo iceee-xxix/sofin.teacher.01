@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('users_id')->nullable();
             $table->text('link_url')->nullable();
             $table->text('remark')->nullable();
+            $table->date('date')->nullable();
             $table->timestamps();
         });
     }

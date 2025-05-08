@@ -56,7 +56,7 @@
                                         <img src="{{asset('assets/img/icons/unicons/chart-success.png')}}" alt="chart success" class="rounded" />
                                     </div>
                                 </div>
-                                <span class="fw-semibold d-block mb-1">ออเดอร์ทั้งหมด</span>
+                                <span class="fw-semibold d-block mb-1">คอร์สทั้งหมด</span>
                                 <h3 class="card-title mb-2">{{$ordertotal}} รายการ</h3>
                             </div>
                         </div>
@@ -66,7 +66,7 @@
             <div class="col-lg-6 col-md-12 order-2 mb-4">
                 <div class="card">
                     <div class="card-header">
-                        <h6>สถิติเมนูขายดี</h6>
+                        <h6>สถิติคอร์สขายดี</h6>
                         <hr>
                     </div>
                     <div class="card-body">
@@ -93,15 +93,16 @@
             <div class="col-lg-12 col-md-12 order-3">
                 <div class="card">
                     <div class="card-header">
-                        <h6>รายการออเดอร์ทั้งหมด</h6>
+                        <h6>รายการคอร์สทั้งหมด</h6>
                         <hr>
                     </div>
                     <div class="card-body">
                         <table id="myTable" class="display table-responsive">
                             <thead>
                                 <tr>
+                                    <th class="text-center">เลขออเดอร์</th>
                                     <th class="text-left">ชื่อลูกค้า</th>
-                                    <th class="text-center">เลขโต้ะ/เลขออเดอร์</th>
+                                    <th class="text-center">เบอร์โทรศัพท์</th>
                                     <th class="text-center">ยอดราคา</th>
                                     <th class="text-left">หมายเหตุ</th>
                                     <th class="text-left">วันที่สั่ง</th>
@@ -123,7 +124,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">รายละเอียดออเดอร์</h5>
+                <h5 class="modal-title">รายละเอียดคอร์สเรียน</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" id="body-html">
@@ -173,7 +174,7 @@
             processing: true,
             scrollX: true,
             order: [
-                [4, 'desc']
+                [5, 'desc']
             ],
             ajax: {
                 url: "{{route('ListOrder')}}",
@@ -184,12 +185,17 @@
             },
 
             columns: [{
+                    data: 'order_id',
+                    class: 'text-center',
+                    width: '10%'
+                },
+                {
                     data: 'name',
                     class: 'text-left',
                     width: '15%'
                 },
                 {
-                    data: 'order_id',
+                    data: 'tel',
                     class: 'text-center',
                     width: '15%'
                 },
@@ -216,7 +222,7 @@
                 {
                     data: 'action',
                     class: 'text-center',
-                    width: '20%',
+                    width: '10%',
                     orderable: false
                 },
             ]

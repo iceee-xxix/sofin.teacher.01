@@ -58,6 +58,7 @@ $config = Config::first();
     <div class="container-xxl">
         <div class="authentication-wrapper authentication-basic container-p-y">
             <div class="authentication-inner">
+                <a href="{{route('index')}}" class="btn btn-sm btn-outline-primary mb-2" type="button">หน้าแรก</a>
                 <div class="card">
                     <div class="card-body">
                         <div class="app-brand justify-content-center">
@@ -92,11 +93,11 @@ $config = Config::first();
                                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                                 </div>
                             </div>
-                            <div class="mb-3 row">
-                                <div class="col-6 d-flex justify-content-end">
+                            <div class="mb-3 row d-flex justify-content-center">
+                                <div class="col-auto">
                                     <a href="{{route('users.register')}}" class="btn btn-primary" type="button">สมัครสมาชิก</a>
                                 </div>
-                                <div class="col-6 d-flex justify-content-start">
+                                <div class="col-auto">
                                     <button class="btn btn-primary" type="submit">เข้าสู่ระบบ</button>
                                 </div>
                             </div>
