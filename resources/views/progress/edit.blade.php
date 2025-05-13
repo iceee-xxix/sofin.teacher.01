@@ -34,6 +34,12 @@
                                             <input type="date" class="form-control" id="date" name="date" value="{{ old('date', $info->date) }}" required>
                                         </div>
                                     </div>
+                                    <div class="row g-3 mb-3">
+                                        <div class="col-md-12">
+                                            <label for="file" class="form-label">ไฟล์แนบ : </label>
+                                            <input type="file" class="form-control" id="file" name="file">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="card-footer d-flex justify-content-end">
                                     <button type="submit" class="btn btn-outline-primary">บันทึก</button>

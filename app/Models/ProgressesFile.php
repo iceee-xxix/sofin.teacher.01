@@ -5,12 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Progresses extends Model
+class ProgressesFile extends Model
 {
     use HasFactory;
-
-    public function files()
-    {
-        return $this->hasOne(ProgressesFile::class, 'progresses_id');
-    }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Progresses;
+use App\Models\ProgressesFile;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -107,6 +108,16 @@ class Progress extends Controller
             $table->remark = $input['remark'];
             $table->date = $input['date'];
             if ($table->save()) {
+                if ($request->hasFile('file')) {
+                    $file = $request->file('file');
+                    $filename = time() . '_' . $file->getClientOriginalName();
+                    $path = $file->storeAs('image', $filename, 'public');
+
+                    $file_table = new ProgressesFile();
+                    $file_table->progresses_id = $table->id;
+                    $file_table->file = $path;
+                    $file_table->save();
+                }
                 return redirect()->route('progressDetail', $input['users_id'])->with('success', 'บันทึกรายการเรียบร้อยแล้ว');
             }
         } else {
@@ -115,6 +126,18 @@ class Progress extends Controller
             $table->remark = $input['remark'];
             $table->date = $input['date'];
             if ($table->save()) {
+                if ($request->hasFile('file')) {
+                    $file_table = ProgressesFile::where('progresses_id', $input['id'])->delete();
+
+                    $file = $request->file('file');
+                    $filename = time() . '_' . $file->getClientOriginalName();
+                    $path = $file->storeAs('image', $filename, 'public');
+
+                    $file_table = new ProgressesFile();
+                    $file_table->progresses_id = $table->id;
+                    $file_table->file = $path;
+                    $file_table->save();
+                }
                 return redirect()->route('progressDetail', $table->users_id)->with('success', 'บันทึกรายการเรียบร้อยแล้ว');
             }
         }
@@ -142,12 +165,12 @@ class Progress extends Controller
     }
 
     function DateTimeThai($strDate)
-{
-    $strYear = date("Y", strtotime($strDate)) + 543;
-    $strMonth = date("n", strtotime($strDate));
-    $strDay = date("j", strtotime($strDate));
-    $strMonthCut = array("", "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม");
-    $strMonthThai = $strMonthCut[$strMonth];
-    return "$strDay $strMonthThai $strYear";
-}
+    {
+        $strYear = date("Y", strtotime($strDate)) + 543;
+        $strMonth = date("n", strtotime($strDate));
+        $strDay = date("j", strtotime($strDate));
+        $strMonthCut = array("", "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม");
+        $strMonthThai = $strMonthCut[$strMonth];
+        return "$strDay $strMonthThai $strYear";
+    }
 }

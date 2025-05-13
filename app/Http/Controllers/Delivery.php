@@ -236,7 +236,7 @@ class Delivery extends Controller
 
     public function progresslist()
     {
-        $list = Progresses::where('users_id', Session::get('user')->id)->orderBy('id', 'desc')->get();
+        $list = Progresses::where('users_id', Session::get('user')->id)->orderBy('id', 'desc')->with('files')->get();
         return view('delivery.progresslist', compact('list'));
     }
 
