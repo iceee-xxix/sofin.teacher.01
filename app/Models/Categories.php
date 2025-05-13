@@ -20,4 +20,9 @@ class Categories extends Model
     {
         return $this->hasMany(Menu::class, 'categories_id');
     }
+
+    public function preview()
+    {
+        return $this->hasMany(Preview::class, 'categories_id');
+    }
 }

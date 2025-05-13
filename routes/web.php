@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\Admin;
 use App\Http\Controllers\admin\Category;
 use App\Http\Controllers\admin\Menu;
+use App\Http\Controllers\admin\Preview;
 use App\Http\Controllers\admin\Progress;
 use App\Http\Controllers\admin\Promotion;
 use App\Http\Controllers\admin\Table;
@@ -37,6 +38,8 @@ Route::get('/users/login', [Delivery::class, 'login'])->name('users.login');
 Route::get('/users/register', [Delivery::class, 'register'])->name('users.register');
 Route::post('/users/UsersRegister', [Delivery::class, 'UsersRegister'])->name('users.UsersRegister');
 Route::get('/users/detail/{id}', [Delivery::class, 'detail'])->name('users.detail');
+Route::get('/users/preview/{id}', [Delivery::class, 'preview'])->name('users.preview');
+Route::get('/users/preview/preview_detail/{id}', [Delivery::class, 'preview_detail'])->name('users.preview_detail');
 Route::get('/users/order', [Delivery::class, 'order'])->name('users.order');
 Route::post('/users/sendEmp', [Delivery::class, 'sendEmp'])->name('users.sendEmp');
 Route::post('/users/sendorder', [Delivery::class, 'SendOrder'])->name('users.SendOrder');
@@ -122,6 +125,13 @@ Route::middleware(['role:admin'])->group(function () {
     Route::get('/admin/menu/edit/{id}', [Menu::class, 'menuEdit'])->name('menuEdit');
     Route::post('/admin/menu/delete', [Menu::class, 'menuDelete'])->name('menuDelete');
     Route::post('/admin/menu/save', [Menu::class, 'menuSave'])->name('menuSave');
+    //พรีวิวหมวดหมู่
+    Route::get('/admin/preview', [Preview::class, 'preview'])->name('preview');
+    Route::post('/admin/preview/previewlistData', [Preview::class, 'previewlistData'])->name('previewlistData');
+    Route::get('/admin/preview/create', [Preview::class, 'previewCreate'])->name('previewCreate');
+    Route::get('/admin/preview/edit/{id}', [Preview::class, 'previewEdit'])->name('previewEdit');
+    Route::post('/admin/preview/delete', [Preview::class, 'previewDelete'])->name('previewDelete');
+    Route::post('/admin/preview/save', [Preview::class, 'previewSave'])->name('previewSave');
     //กำหนดราคาอาหาร
     Route::get('/admin/menuOption/{id}', [Menu::class, 'menuOption'])->name('menuOption');
     Route::post('/admin/menu/menulistOption', [Menu::class, 'menulistOption'])->name('menulistOption');

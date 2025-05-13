@@ -12,6 +12,7 @@ use App\Models\MenuStock;
 use App\Models\OrderPay;
 use App\Models\Orders;
 use App\Models\OrdersDetails;
+use App\Models\Preview;
 use App\Models\Progresses;
 use App\Models\Promotion;
 use App\Models\Stock;
@@ -32,7 +33,8 @@ class Delivery extends Controller
         }
         $promotion = Promotion::where('is_status', 1)->get();
         $category = Categories::has('menu')->with('files')->get();
-        return view('delivery.main_page', compact('category', 'promotion'));
+        $category_preview = Categories::has('preview')->with('files')->get();
+        return view('delivery.main_page', compact('category', 'promotion', 'category_preview'));
     }
 
     public function login()
@@ -236,5 +238,18 @@ class Delivery extends Controller
     {
         $list = Progresses::where('users_id', Session::get('user')->id)->orderBy('id', 'desc')->get();
         return view('delivery.progresslist', compact('list'));
+    }
+
+    public function preview($id)
+    {
+        $preview = Preview::where('categories_id', $id)->with('files')->orderBy('created_at', 'asc')->get();
+        return view('delivery.preview', compact('preview'));
+    }
+
+
+    public function preview_detail($id)
+    {
+        $preview = Preview::with('files')->find($id);
+        return view('delivery.preview_detail', compact('preview'));
     }
 }
